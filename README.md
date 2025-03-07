@@ -17,4 +17,4 @@ Some of my goals for this year include:
 3. Keep up my Chemistry and Statistics studies
 
 I am currently doing part-time work at [Ramen Takara](https://www.ramentakara.co.nz/) in Browns Bay. 
-![]([[https://tenor.com/en-GB/view/dragon-ball-goku-eating-noodles-food-gif-16744504](https://media1.tenor.com/m/uOHj2K7TsQQAAAAC/dragon-ball-goku.gif)](https://c.tenor.com/uOHj2K7TsQQAAAAC/tenor.gif)
+![](https://c.tenor.com/uOHj2K7TsQQAAAAC/tenor.gif)
