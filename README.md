@@ -15,7 +15,6 @@ Some of my goals for this year include:
 2. Go to Japan for a working holiday
 3. Keep up my Chemistry and Statistics studies
 
-I am currently doing part-time work at [Ramen Takara](https://www.ramentakara.co.nz/) in Browns Bay.
-![](https://tenor.com/en-GB/view/dragon-ball-goku-eating-noodles-food-gif-16744504)
+I am currently doing part-time work at [Ramen Takara](https://www.ramentakara.co.nz/) in Browns Bay. ![](https://tenor.com/en-GB/view/dragon-ball-goku-eating-noodles-food-gif-16744504)
 
 
