@@ -9,7 +9,7 @@
 * I am interested in learning about data structures and how data is stored
 
 A meme that captures how I currently feel about my university studies is 
-![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
+![](https://c.tenor.com/gnHX3OgQA94AAAAd/tenor.gif)
 
 #### Goals
 Some of my goals for this year include:
