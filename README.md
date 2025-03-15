@@ -9,6 +9,7 @@
 * I am interested in learning about data structures and how data is stored
 
 A meme that captures how I currently feel about my university studies is 
+
 ![](https://c.tenor.com/gnHX3OgQA94AAAAd/tenor.gif)
 
 #### Goals
@@ -18,4 +19,5 @@ Some of my goals for this year include:
 3. Keep up my Chemistry and Statistics studies
 
 I am currently doing part-time work at [Ramen Takara](https://www.ramentakara.co.nz/) in Browns Bay. 
+
 ![](https://c.tenor.com/uOHj2K7TsQQAAAAC/tenor.gif)
