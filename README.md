@@ -14,7 +14,7 @@ A meme that captures how I currently feel about my university studies is
 
 #### Goals
 Some of my goals for this year include:
-1. Sit the [Japanese proficiency test](http://jlpt.jp/e/about/levelsummary.html)) N2
+1. Sit the [Japanese proficiency test](http://jlpt.jp/e/about/levelsummary.html) N2
 2. Go to Japan for a working holiday
 3. Keep up my Chemistry and Statistics studies
 
