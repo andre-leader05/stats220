@@ -88,9 +88,9 @@ max_day_num <- avg_week[which.max(avg_week)]
 
 The average rate of Toyota Aquas spotted across the study was **`r avg_aqua_rate` Aquas per minute.**
 
-The day with the highest rate was **`r days[which.max(avg_week)]`** with an average rate of **`r round(max_day_num,2)`**.
+The day with the highest rate was **`r days[which.max(avg_week)]`** with an average rate of **`r round(max_day_num,2)` Aquas per minute**.
 
-Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. With a larger sample size, it would be worth testing the statistical significance of the difference between the **`max_day`** average and the mean average rate of Aquas per minute.
+Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. With a larger sample size, it would be worth testing the statistical significance of the difference between the **`r max_day`** average (**`r round(max_day_num,2)`**) and the mean average rate (**`r avg_aqua_rate`**) of Aquas per minute.
 
 ## Toyota Aqua Colours
 
@@ -138,4 +138,4 @@ main_colour <- names(which.max(table(data_longer_cars$car_colours)))
 main_colour_num <- max(table(data_longer_cars$car_colours))
 ```
 
-The Toyota Aqua colour spotted in the most trips was **`r main_colour`** which was spotted in **`r main_colour_num`** trips. This suggests that you are most likely to encounter a **`r main_colour`** Toyota Aqua.
+The Toyota Aqua colour spotted in the most observations was **`r main_colour`** which was spotted in **`r main_colour_num`** trips. This suggests that you are most likely to encounter a **`r main_colour`** Toyota Aqua when driving.
