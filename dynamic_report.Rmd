@@ -1,0 +1,116 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{r, echo=FALSE}
+library(tidyverse)
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vSHm7BhfFMlG1Jn-p4xgNdRKFy8_2MEfX-v6xtUSz7tgvtypTbBVit7zaWk_f_cVnamirMYafGvn1E0/pub?gid=921568506&single=true&output=csv")
+logged_data <- rename(logged_data, time_recorded = 1, day_of_week = 2, time_of_day = 3,
+                      trip_duration = 4, aqua_seen = 5, aqua_number = 6, 
+                      car_colours = 7)
+logged_data$trip_duration <- as.numeric(logged_data$trip_duration)/60
+```
+
+
+## Day of the week and Toyota Aquas
+
+Does the day of the week influence the rate of Toyota Aquas that are spotted? Participants of the survey kept track of the number of Toyota Aquas they spotted while driving, and the duration of their trip.
+
+```{r, echo=FALSE}
+logged_data$day_of_week <- factor(logged_data$day_of_week, levels = 
+                                    c("Monday", "Tuesday", "Wednesday",
+                                      "Thursday", "Friday", "Saturday",
+                                      "Sunday"))
+
+ggplot(data = logged_data) +
+    geom_bar(aes(x = day_of_week, fill = day_of_week)) +
+    labs(title = "Aqua Spotting Days",
+         subtitle = "The days of the week that were our observations made",
+         caption = "Source: Survey collected by André Leader, Statistics Undergrad at UoA",
+         x = "Day Measured",
+         y = "Count") +
+     theme(legend.position = "none")
+```
+
+The above barplot counts the amount of observations (trips in the car) that were made on each day of the week. Although our sample size is very limited, with only two observations on Wednesday, we have data for each day of the week and can comment on hour our data differs past on the day!
+
+By dividing the number of Aquas spotted by the duration of each trip, the rate of Aquas spotted per minute for each trip was calculated.
+
+```{r, echo=FALSE}
+logged_data <- cbind(logged_data, 
+                     aqua_rate = logged_data$aqua_number/logged_data$trip_duration)
+
+# The total average rate of aquas per minute, and for each day of the week,
+# alongside the day with the maximum rate
+avg_aqua_rate <- round(mean(logged_data$aqua_rate, na.rm=TRUE),2)
+avg_rate_mon <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Monday"], na.rm=TRUE)
+avg_rate_tue <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Tuesday"], na.rm=TRUE)
+avg_rate_wed <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Wednesday"], na.rm=TRUE)
+avg_rate_thu <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Thursday"], na.rm=TRUE)
+avg_rate_fri <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Friday"], na.rm=TRUE)
+avg_rate_sat <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Saturday"], na.rm=TRUE)
+avg_rate_sun <- mean(logged_data$aqua_rate[logged_data$day_of_week=="Sunday"], na.rm=TRUE)
+avg_week <- c(avg_rate_mon, avg_rate_tue, avg_rate_wed, avg_rate_thu, 
+              avg_rate_fri, avg_rate_sat, avg_rate_sun)
+days <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday")
+```
+
+The average rate of Toyota Aquas spotted across the study was **`r avg_aqua_rate` Aquas per minute.**
+
+The day with the highest rate was **`r days[which.max(avg_week)]`** with an average rate of **`r round(max(avg_week),2)`**.
+
+Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r days[which.max(avg_week)]`** on average. With a larger sample size, it would be worth testing the statistical significance of the difference between the **`r days[which.max(avg_week)]`** average and the mean average rate of Aquas per minute.
+
+## What were the most common Toyota Aqua colours?
+
+Below is a plot displaying the number of observations that each colour of Toyota Aqua were spotted. The bars are colour coded to match the car colour represented.
+
+```{r}
+# Adds multiple rows for each observation, solely to remove multiple car colours
+# from being in the same cell
+data_longer <- logged_data %>%
+    separate_rows(car_colours, sep = ", ")
+
+#Removes the row that saw no Aquas
+data_longer_cars <- data_longer[data_longer$aqua_seen=="Yes",]
+
+# This converts our car_colours vector to a factor that we can use to determine 
+# the order that our bars are plotted
+data_longer_cars$car_colours <- factor(data_longer_cars$car_colours, 
+                                       levels = unique(data_longer_cars$car_colours))
+
+# This determines colours for the "silver" and "other" levels of car_colours,
+# as these colours do not prexist in R
+bar_colours <- as.character(unique(data_longer_cars$car_colours))
+bar_colours[2] <- "lightgrey"
+bar_colours[5] <- "gray28"
+
+# This gets the colours to use for each bar to align with the levels of our 
+# car_colours factor
+colour_map <- setNames(bar_colours, levels(data_longer_cars$car_colours))
+
+# We must use the scale_fill_manual function to determine to draw upon our
+# assigned order of bar colours
+ggplot(data = data_longer_cars) +
+    geom_bar(aes(x = car_colours, fill = car_colours)) +
+    scale_fill_manual(values = colour_map) +
+    labs(title = "Spotted Colours",
+         subtitle = "The number observations that each colour Aqua was in?",
+         caption = "Source: Survey collected by André Leader, Statistics Undergrad at UoA",
+         x = "Toyota Aqua Colour",
+         y = "Number of trips the colour was spotted on") +
+        theme(legend.position = "none")
+
+# This code determines the name of the factor level with the greatest number of 
+# entries, and the number of these entries
+main_colour <- names(which.max(table(data_longer_cars$car_colours)))
+main_colour_number <- max(table(data_longer_cars$car_colours))
+```
+
+The Toyota Aqua colour spotted in the most trips was **`r main_colour`** which was spotted in **`r main_colour_number`** trips.
