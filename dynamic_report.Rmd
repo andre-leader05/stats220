@@ -90,7 +90,7 @@ The average rate of Toyota Aquas spotted across the study was **`r avg_aqua_rate
 
 The day with the highest rate was **`r days[which.max(avg_week)]`** with an average rate of **`r round(max_day_num,2)` Aquas per minute**.
 
-Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. With a larger sample size, it would be worth testing the statistical significance of the difference between the **`r max_day`** average (**`r round(max_day_num,2)`**) and the mean average rate (**`r avg_aqua_rate`**) of Aquas per minute.
+Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. It would be worth testing the statistical significance of the difference between the **`r max_day`** average (**`r round(max_day_num,2)`**) and the mean average rate (**`r avg_aqua_rate`**) of Aquas per minute.
 
 ## Toyota Aqua Colours
 
