@@ -26,8 +26,8 @@ h2 {
 p {
    font-family: 'Roboto';
    font-size: 15px;
-   font-weight: 200;
-   width: 60%
+   width: 80%
+   font-weight: 200
 }
 ```
 
@@ -66,9 +66,8 @@ The above barplot counts the amount of observations (trips in the car) that were
 By dividing the number of Aquas spotted by the duration of each trip, the rate of Aquas spotted per minute for each trip was calculated.
 
 ```{r, echo=FALSE}
-logged_data <- cbind(logged_data, 
-                     aqua_rate = logged_data$aqua_number/logged_data$trip_duration)
-
+logged_data <- logged_data %>% 
+                     mutate(aqua_rate = logged_data$aqua_number/logged_data$trip_duration)
 # The total average rate of aquas per minute, and for each day of the week,
 # alongside the day with the maximum rate
 avg_aqua_rate <- round(mean(logged_data$aqua_rate, na.rm=TRUE),2)
@@ -90,7 +89,7 @@ The average rate of Toyota Aquas spotted across the study was **`r avg_aqua_rate
 
 The day with the highest rate was **`r days[which.max(avg_week)]`** with an average rate of **`r round(max_day_num,2)` Aquas per minute**.
 
-Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. It would be worth testing the statistical significance of the difference between the **`r max_day`** average (**`r round(max_day_num,2)`**) and the overall mean average rate (**`r avg_aqua_rate`**) of Aquas per minute.
+Our sample size was very small, and so we cannot claim with certainty that **`r days[which.max(avg_week)]`** tends to show the highest number of Toyota Aquas on the road. However, based on our sample data, Toyota Aquas were spotted more frequently on **`r max_day`** on average. With a larger sample size, it would be worth testing the statistical significance of the difference between the **`r max_day`** average (**`r round(max_day_num,2)`**) and the mean average rate (**`r avg_aqua_rate`**) of Aquas per minute.
 
 ## Toyota Aqua Colours
 
