@@ -52,7 +52,7 @@ logged_data$day_of_week <- factor(logged_data$day_of_week, levels =
                                       "Sunday"))
 
 ggplot(data = logged_data) +
-    geom_bar(aes(x = day_of_week, fill = day_of_week)) +
+    geom_bar(aes(x = day_of_week)) +
     labs(title = "Aqua Spotting Days",
          subtitle = "The days of the week that were our observations made",
          caption = "Source: Survey collected by André Leader, Statistics Undergrad at UoA",
